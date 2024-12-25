@@ -1,4 +1,4 @@
-import Footer from "./_components/shared/Footer";
+import { Footer } from "./_components/shared/Footer";
 import { Header } from "./_components/shared/Header";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased ${inter.variable}flex flex-col`}>
+      <body className={`antialiased ${inter.variable}flex flex-col`}>
         <Header />
         <div>{children}</div>
         <Footer />
