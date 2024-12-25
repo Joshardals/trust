@@ -78,12 +78,12 @@ export default function Home() {
                       <span className="font-medium text-charcoalGray">
                         {crypto.name}
                       </span>
-                      <span className="text-slateGray text-sm">
+                      <span className="text-slateGray bg-darkSlateGray/5 text-sm rounded-md p-[0.15rem]">
                         {crypto.fullName}
                       </span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <span className="text-charcoalGray">{crypto.price}</span>
+                      <span className="text-slateGray">{crypto.price}</span>
                       <span className="text-seaGreen">{crypto.change}</span>
                     </div>
                   </div>
