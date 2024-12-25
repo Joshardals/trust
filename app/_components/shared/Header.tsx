@@ -13,6 +13,7 @@ interface HeaderProps {
 export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
   const [showAmount, setShowAmount] = useState(false);
   const [showTabs, setShowTabs] = useState(false);
+  const tabs = ["Crypto", "NFTs"] as const;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +62,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
 
         {showTabs && (
           <div className="flex justify-around border-t border-slateGray/10">
-            {["Crypto", "NFTs"].map((tab) => (
+            {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => onTabChange(tab)}
