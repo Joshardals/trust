@@ -10,7 +10,8 @@ import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiBinance } from "react-icons/si";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("Crypto");
+  const tabs = ["Crypto", "NFTs"] as const;
+  const [activeTab, setActiveTab] = useState<"Crypto" | "NFTs">("Crypto");
   const [hideBalance, setHideBalance] = useState(false);
   const [showHomeTabs, setShowHomeTabs] = useState(true);
   const amount = "$0.00";
@@ -258,7 +259,7 @@ export default function Home() {
         <div className="max-w-[520px] mx-auto px-4 mt-4">
           {showHomeTabs && (
             <div className="flex justify-around gap-6 border-b border-slateGray/10">
-              {["Crypto", "NFTs"].map((tab) => (
+              {tabs.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}

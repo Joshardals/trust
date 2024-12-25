@@ -5,7 +5,7 @@ import { SiGooglecampaignmanager360 } from "react-icons/si";
 import { useEffect, useState } from "react";
 
 interface HeaderProps {
-  amount: number;
+  amount: number | string;
   activeTab: "Crypto" | "NFTs";
   onTabChange: (tab: "Crypto" | "NFTs") => void;
 }
