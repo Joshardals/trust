@@ -1,7 +1,6 @@
 "use client";
 import { MdHomeFilled } from "react-icons/md";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
-import { IoWalletOutline } from "react-icons/io5";
 import { IoCompass } from "react-icons/io5";
 import { RiCopperCoinFill } from "react-icons/ri";
 import { useState } from "react";
