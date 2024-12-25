@@ -2,34 +2,44 @@
 
 import { TbSettingsFilled } from "react-icons/tb";
 import { SiGooglecampaignmanager360 } from "react-icons/si";
-import { IoCopyOutline } from "react-icons/io5";
-import { LuScanLine } from "react-icons/lu";
-import { IoNotificationsOutline } from "react-icons/io5";
-import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [hideBalance, setHideBalance] = useState(false);
-  const amount = "$0.00";
+interface HeaderProps {
+  amount: number;
+  activeTab: "Crypto" | "NFTs";
+  onTabChange: (tab: "Crypto" | "NFTs") => void;
+}
+
+export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
+  const [showAmount, setShowAmount] = useState(false);
+  const [showTabs, setShowTabs] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 100;
-      setScrolled(isScrolled);
+      const amountThreshold = 52;
+      const tabsThreshold = 80;
+
+      if (window.scrollY > amountThreshold) {
+        setShowAmount(true);
+      } else {
+        setShowAmount(false);
+      }
+
+      if (window.scrollY > tabsThreshold) {
+        setShowTabs(true);
+      } else {
+        setShowTabs(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const displayAmount = hideBalance ? "*****" : amount;
-
   return (
-    <header className="bg-white border-b border-slateGray/10 px-4 py-3 fixed top-0 left-0 right-0 z-50">
+    <header className="bg-white border-b border-slateGray/10 sticky top-0 left-0 right-0 z-50">
       <div className="max-w-[520px] mx-auto">
-        {/* Top Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between px-4 py-3">
           <button
             title="settings"
             className="p-2 hover:bg-slateGray/5 rounded-full transition-colors"
@@ -38,7 +48,7 @@ export function Header() {
           </button>
 
           <h1 className="text-charcoalGray text-md font-semibold select-none">
-            {scrolled ? displayAmount : "Home"}
+            {showAmount ? amount : "Home"}
           </h1>
 
           <button
@@ -49,51 +59,24 @@ export function Header() {
           </button>
         </div>
 
-        {/* Wallet Section */}
-        <div className="mt-4">
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setHideBalance(!hideBalance)}
-              className="p-1 hover:bg-slateGray/5 rounded-full transition-colors"
-            >
-              {hideBalance ? (
-                <IoEyeOffOutline className="text-darkSlateGray size-5" />
-              ) : (
-                <IoEyeOutline className="text-darkSlateGray size-5" />
-              )}
-            </button>
-            <span className="text-darkSlateGray text-sm">Main Wallet</span>
-            <span className="text-slateGray">▼</span>
+        {showTabs && (
+          <div className="flex justify-around border-t border-slateGray/10">
+            {["Crypto", "NFTs"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => onTabChange(tab)}
+                className={`py-3 px-6 relative font-medium ${
+                  activeTab === tab ? "text-charcoalGray" : "text-slateGray"
+                }`}
+              >
+                {tab}
+                {activeTab === tab && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 w-[22.2%] mx-auto bg-seaGreen rounded-full" />
+                )}
+              </button>
+            ))}
           </div>
-
-          <div className="flex items-center justify-between mt-2">
-            <div className="flex items-center gap-2">
-              <span className="text-charcoalGray text-3xl font-semibold">
-                {displayAmount}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                title="copy address"
-                className="p-2 bg-slateGray/5 rounded-lg transition-colors"
-              >
-                <IoCopyOutline className="text-darkSlateGray size-5" />
-              </button>
-              <button
-                title="scan QR"
-                className="p-2 bg-slateGray/5 rounded-lg transition-colors"
-              >
-                <LuScanLine className="text-darkSlateGray size-5" />
-              </button>
-              <button
-                title="notifications"
-                className="p-2 bg-slateGray/5 rounded-lg transition-colors"
-              >
-                <IoNotificationsOutline className="text-darkSlateGray size-5" />
-              </button>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </header>
   );

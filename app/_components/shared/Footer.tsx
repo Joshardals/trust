@@ -1,8 +1,8 @@
 "use client";
-import { IoHomeOutline } from "react-icons/io5";
-import { HiArrowsRightLeft } from "react-icons/hi2";
+import { MdHomeFilled } from "react-icons/md";
+import { RiArrowLeftRightFill } from "react-icons/ri";
 import { IoWalletOutline } from "react-icons/io5";
-import { IoCompassOutline } from "react-icons/io5";
+import { IoCompass } from "react-icons/io5";
 import { useState } from "react";
 
 export function Footer() {
@@ -11,11 +11,11 @@ export function Footer() {
   const navItems = [
     {
       name: "Home",
-      icon: <IoHomeOutline className="size-6" />,
+      icon: <MdHomeFilled className="size-6" />,
     },
     {
       name: "Swap",
-      icon: <HiArrowsRightLeft className="size-6" />,
+      icon: <RiArrowLeftRightFill className="size-6" />,
     },
     {
       name: "Earn",
@@ -23,7 +23,7 @@ export function Footer() {
     },
     {
       name: "Discover",
-      icon: <IoCompassOutline className="size-6" />,
+      icon: <IoCompass className="size-6" />,
     },
   ];
 
@@ -41,9 +41,9 @@ export function Footer() {
             >
               {item.icon}
               <span className="text-xs font-medium">{item.name}</span>
-              {activeTab === item.name && (
+              {/* {activeTab === item.name && (
                 <div className="absolute -top-px left-0 right-0 h-0.5 bg-seaGreen rounded-full" />
-              )}
+              )} */}
             </button>
           ))}
         </nav>

@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased ${inter.variable}flex flex-col`}>
-        <Header />
+        {/* <Header /> */}
         <div>{children}</div>
         <Footer />
       </body>
