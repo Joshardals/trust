@@ -23,7 +23,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const displayAmount = hideBalance ? "●●●●●●" : amount;
+  const displayAmount = hideBalance ? "*****" : amount;
 
   return (
     <header className="bg-white border-b border-slateGray/10 px-4 py-3 fixed top-0 left-0 right-0 z-50">
@@ -34,7 +34,7 @@ export function Header() {
             title="settings"
             className="p-2 hover:bg-slateGray/5 rounded-full transition-colors"
           >
-            <TbSettingsFilled className="text-darkSlateGray size-4" />
+            <TbSettingsFilled className="text-darkSlateGray size-5" />
           </button>
 
           <h1 className="text-charcoalGray text-md font-semibold select-none">
@@ -45,7 +45,7 @@ export function Header() {
             title="manage crypto"
             className="p-2 hover:bg-slateGray/5 rounded-full transition-colors"
           >
-            <SiGooglecampaignmanager360 className="text-darkSlateGray size-4" />
+            <SiGooglecampaignmanager360 className="text-darkSlateGray size-5" />
           </button>
         </div>
 
