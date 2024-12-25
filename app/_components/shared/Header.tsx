@@ -48,7 +48,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
             <TbSettingsFilled className="text-darkSlateGray size-5" />
           </button>
 
-          <h1 className="text-charcoalGray text-md font-semibold select-none">
+          <h1 className="text-charcoalGray text-lg font-semibold select-none">
             {showAmount ? amount : "Home"}
           </h1>
 
