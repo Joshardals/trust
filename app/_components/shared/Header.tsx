@@ -45,7 +45,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
             title="settings"
             className="p-2 hover:bg-slateGray/5 rounded-full transition-colors"
           >
-            <TbSettingsFilled className="text-darkSlateGray size-5" />
+            <TbSettingsFilled className="text-darkSlateGray size-6" />
           </button>
 
           <h1 className="text-charcoalGray text-lg font-medium select-none">
@@ -56,7 +56,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
             title="manage crypto"
             className="p-2 hover:bg-slateGray/5 rounded-full transition-colors"
           >
-            <SiGooglecampaignmanager360 className="text-darkSlateGray size-5" />
+            <SiGooglecampaignmanager360 className="text-darkSlateGray size-6" />
           </button>
         </div>
 
