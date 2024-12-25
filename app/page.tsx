@@ -258,7 +258,7 @@ export default function Home() {
         {/* Tabs */}
         <div className="max-w-[520px] mx-auto px-4 mt-4">
           {showHomeTabs && (
-            <div className="flex justify-around gap-6 border-b border-slateGray/10">
+            <div className="flex justify-around gap-6">
               {tabs.map((tab) => (
                 <button
                   key={tab}
