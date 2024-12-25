@@ -38,7 +38,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
   }, []);
 
   return (
-    <header className="bg-white border-b border-slateGray/10 sticky top-0 left-0 right-0 z-50">
+    <header className="bg-white sticky top-0 left-0 right-0 z-50">
       <div className="max-w-[520px] mx-auto">
         <div className="flex items-center justify-between px-4 py-3">
           <button
@@ -61,7 +61,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
         </div>
 
         {showTabs && (
-          <div className="flex justify-around border-t border-slateGray/10">
+          <div className="flex justify-around border-b border-slateGray/10">
             {tabs.map((tab) => (
               <button
                 key={tab}
