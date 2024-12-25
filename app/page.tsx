@@ -2,7 +2,6 @@
 
 import { Header } from "./_components/shared/Header";
 import { useState } from "react";
-import Image from "next/image";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiBinance } from "react-icons/si";
 import { IoSearch } from "react-icons/io5";
