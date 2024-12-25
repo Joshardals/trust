@@ -4,7 +4,6 @@ import { Header } from "./_components/shared/Header";
 import { useState } from "react";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiBinance } from "react-icons/si";
-import { IoSearch } from "react-icons/io5";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Crypto");
