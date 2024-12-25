@@ -1,11 +1,11 @@
 import { Footer } from "./_components/shared/Footer";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 
-const inter = Inter({
+const inter = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
   display: "swap",
   variable: "--font-inter",
 });

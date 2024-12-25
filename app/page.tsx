@@ -1,13 +1,14 @@
 "use client";
 
 import { Header } from "./_components/shared/Header";
-import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
-import { IoCopyOutline } from "react-icons/io5";
-import { LuScanLine } from "react-icons/lu";
-import { IoNotificationsOutline } from "react-icons/io5";
+import { RiNotification2Fill } from "react-icons/ri";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+import { RiQrScan2Line } from "react-icons/ri";
+import { BiSolidCopy } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiBinance } from "react-icons/si";
+import { TiArrowSortedDown } from "react-icons/ti";
 
 export default function Home() {
   const tabs = ["Crypto", "NFTs"] as const;
@@ -55,150 +56,6 @@ export default function Home() {
       amount: "0",
       value: "$0.00",
     },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
-      amount: "0",
-      value: "$0.00",
-    },
   ];
 
   return (
@@ -208,22 +65,24 @@ export default function Home() {
         activeTab={activeTab}
         onTabChange={setActiveTab}
       />
-      <main className="min-h-[200vh] bg-white pb-20">
+      <main className="min-h-screen bg-white pb-20">
         {/* Wallet Section */}
         <div className="max-w-[520px] mx-auto px-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             <button
+              type="button"
               onClick={() => setHideBalance(!hideBalance)}
-              className="p-1 hover:bg-slateGray/5 rounded-full transition-colors"
+              className="hover:bg-slateGray/5 rounded-full transition-colors pr-2"
             >
               {hideBalance ? (
-                <IoEyeOffOutline className="text-darkSlateGray size-5" />
+                <BsEyeSlashFill className="text-darkSlateGray size-5" />
               ) : (
-                <IoEyeOutline className="text-darkSlateGray size-5" />
+                <BsEyeFill className="text-darkSlateGray size-5" />
               )}
             </button>
-            <span className="text-darkSlateGray text-sm">Main Wallet</span>
-            <span className="text-slateGray">▼</span>
+            <span className="text-darkSlateGray font-medium">Main Wallet</span>
+
+            <TiArrowSortedDown className="text-darkSlateGray size-4" />
           </div>
 
           <div className="flex items-center justify-between mt-2">
@@ -237,19 +96,19 @@ export default function Home() {
                 title="copy address"
                 className="p-2 bg-slateGray/5 rounded-lg transition-colors"
               >
-                <IoCopyOutline className="text-darkSlateGray size-5" />
+                <BiSolidCopy className="text-darkSlateGray size-5" />
               </button>
               <button
                 title="scan QR"
                 className="p-2 bg-slateGray/5 rounded-lg transition-colors"
               >
-                <LuScanLine className="text-darkSlateGray size-5" />
+                <RiQrScan2Line className="text-darkSlateGray size-5" />
               </button>
               <button
                 title="notifications"
                 className="p-2 bg-slateGray/5 rounded-lg transition-colors"
               >
-                <IoNotificationsOutline className="text-darkSlateGray size-5" />
+                <RiNotification2Fill className="text-darkSlateGray size-5" />
               </button>
             </div>
           </div>
@@ -291,7 +150,7 @@ export default function Home() {
                         <span className="font-medium text-charcoalGray">
                           {crypto.name}
                         </span>
-                        <span className="text-slateGray bg-darkSlateGray/5 text-sm rounded-md p-[0.15rem]">
+                        <span className="text-slateGray bg-slateGray/5 text-sm rounded-md p-[0.15rem]">
                           {crypto.fullName}
                         </span>
                       </div>

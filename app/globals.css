@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply bg-white text-charcoalGray font-inter;
+    @apply bg-white text-charcoalGray font-inter font-medium;
   }
 }
