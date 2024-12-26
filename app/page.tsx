@@ -16,8 +16,59 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<"Crypto" | "NFTs">("Crypto");
   const [hideBalance, setHideBalance] = useState(false);
   const [showHomeTabs, setShowHomeTabs] = useState(true);
-  const amount = "$0.00";
-  const displayAmount = hideBalance ? "*****" : amount;
+
+  const formatWithCustomDollarSign = (amount: string) => {
+    return (
+      <span>
+        <span className="font-sans">$</span>
+        {amount.replace("$", "")}
+      </span>
+    );
+  };
+
+  const formatCurrency = (value: number): string => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  };
+
+  const amount = formatCurrency(0);
+  const displayAmount = hideBalance
+    ? "*****"
+    : formatWithCustomDollarSign(amount);
+
+  const cryptoData = [
+    {
+      icon: <FaBitcoin className="text-btcOrange size-10" />,
+      name: "BTC",
+      fullName: "Bitcoin",
+      price: formatWithCustomDollarSign(formatCurrency(98994.1)),
+      change: "+1.34%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: <EthereumIcon className="size-10" />,
+      name: "ETH",
+      fullName: "Ethereum",
+      price: formatWithCustomDollarSign(formatCurrency(3463.49)),
+      change: "+0.12%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: <SiBinance className="text-bnbYellow size-10" />,
+      name: "BNB",
+      fullName: "BNB Smart Chain",
+      price: formatWithCustomDollarSign(formatCurrency(700.73)),
+      change: "+1.17%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,41 +80,10 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const cryptoData = [
-    {
-      icon: <FaBitcoin className="text-btcOrange size-10" />,
-      name: "BTC",
-      fullName: "Bitcoin",
-      price: "$98,994.10",
-      change: "+1.34%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      // icon: <FaEthereum className="text-ethBlue size-10" />,
-      icon: <EthereumIcon className="size-10" />,
-      name: "ETH",
-      fullName: "Ethereum",
-      price: "$3,463.49",
-      change: "+0.12%",
-      amount: "0",
-      value: "$0.00",
-    },
-    {
-      icon: <SiBinance className="text-bnbYellow size-10" />,
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: "$700.73",
-      change: "+1.17%",
-      amount: "0",
-      value: "$0.00",
-    },
-  ];
-
   return (
     <>
       <Header
-        amount={displayAmount}
+        amount={hideBalance ? "*****" : formatWithCustomDollarSign(amount)}
         activeTab={activeTab}
         onTabChange={setActiveTab}
       />

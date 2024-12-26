@@ -6,7 +6,7 @@ import GearIcon from "../ui/GearIcon";
 import DuoToggleIcon from "../ui/DuoToggle";
 
 interface HeaderProps {
-  amount: number | string;
+  amount: string | any;
   activeTab: "Crypto" | "NFTs";
   onTabChange: (tab: "Crypto" | "NFTs") => void;
 }
