@@ -121,7 +121,7 @@ export default function Home() {
                     width={50}
                     height={50}
                     alt="copy"
-                    className="size-5"
+                    className="size-4"
                   />
                 </button>
                 <button title="scan" className="icons-container">
@@ -130,7 +130,7 @@ export default function Home() {
                     width={50}
                     height={50}
                     alt="qr"
-                    className="size-5"
+                    className="size-4"
                   />
                 </button>
                 <button title="notification" className="icons-container">
@@ -139,7 +139,7 @@ export default function Home() {
                     width={50}
                     height={50}
                     alt="notification"
-                    className="size-5"
+                    className="size-4"
                   />
                 </button>
               </div>
