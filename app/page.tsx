@@ -225,8 +225,8 @@ export default function Home() {
                     <div className="flex-shrink-0">{crypto.icon}</div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold">{crypto.name}</span>
-                        <span className="text-blueSteel text-[13px] bg-softWhite px-1 py-0.5 rounded">
+                        <span>{crypto.name}</span>
+                        <span className="text-blueSteel text-xs bg-softWhite px-1 py-0.5 rounded">
                           {crypto.fullName}
                         </span>
                       </div>
@@ -241,7 +241,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-semibold">{crypto.amount}</div>
+                    <div>{crypto.amount}</div>
                     <div className="text-blueSteel text-xs mt-0.5">
                       {crypto.value}
                     </div>
@@ -249,7 +249,7 @@ export default function Home() {
                 </div>
               ))}
 
-              <p className="text-electricBlue text-center cursor-pointer">
+              <p className="text-electricBlue text-center text-xs cursor-pointer">
                 Manage crypto
               </p>
             </div>
