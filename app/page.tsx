@@ -231,10 +231,10 @@ export default function Home() {
                         </span>
                       </div>
                       <div className="flex items-center gap-2 mt-0.5">
-                        <span className="text-blueSteel text-[15px]">
+                        <span className="text-blueSteel text-xs">
                           {crypto.price}
                         </span>
-                        <span className="text-positiveGreen text-[15px]">
+                        <span className="text-positiveGreen text-xs">
                           {crypto.change}
                         </span>
                       </div>
@@ -242,7 +242,7 @@ export default function Home() {
                   </div>
                   <div className="text-right">
                     <div className="font-semibold">{crypto.amount}</div>
-                    <div className="text-blueSteel text-[15px] mt-0.5">
+                    <div className="text-blueSteel text-xs mt-0.5">
                       {crypto.value}
                     </div>
                   </div>

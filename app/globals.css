@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-white text-charcoalBlue font-[sans-serif] font-medium;
+    @apply bg-white text-charcoalBlue font-[roboto] font-medium;
   }
 
   .icons-container {
