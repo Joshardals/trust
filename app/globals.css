@@ -4,6 +4,14 @@
 
 @layer base {
   body {
-    @apply bg-white text-charcoalGray font-inter font-medium;
+    @apply bg-white text-charcoalBlue font-sans font-medium;
+  }
+
+  .icons-container {
+    @apply p-2 bg-softWhite rounded-md;
+  }
+
+  .icons-container-child {
+    @apply text-blueSteel size-5;
   }
 }

@@ -1,14 +1,19 @@
+// Homepage.tsx
 "use client";
 
 import { Header } from "./_components/shared/Header";
-import { RiNotification2Fill } from "react-icons/ri";
+import { RiNotification2Fill, RiQrScan2Line } from "react-icons/ri";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { RiQrScan2Line } from "react-icons/ri";
 import { BiSolidCopy } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiBinance } from "react-icons/si";
 import { TiArrowSortedDown } from "react-icons/ti";
+import { IoSearchOutline } from "react-icons/io5";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { BsBank2 } from "react-icons/bs";
+import { MdHistory } from "react-icons/md";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
 
 export default function Home() {
   const tabs = ["Crypto", "NFTs"] as const;
@@ -20,7 +25,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const tabsThreshold = 80;
+      const tabsThreshold = 250;
       setShowHomeTabs(window.scrollY <= tabsThreshold);
     };
 
@@ -30,29 +35,29 @@ export default function Home() {
 
   const cryptoData = [
     {
-      icon: <FaBitcoin className="text-[#F7931A] size-8" />,
+      icon: <FaBitcoin className="text-btcOrange size-10" />,
       name: "BTC",
       fullName: "Bitcoin",
-      price: "$98,623.51",
-      change: "+4.08%",
+      price: "$98,994.10",
+      change: "+1.34%",
       amount: "0",
       value: "$0.00",
     },
     {
-      icon: <FaEthereum className="text-[#627EEA] size-8" />,
+      icon: <FaEthereum className="text-ethBlue size-10" />,
       name: "ETH",
       fullName: "Ethereum",
-      price: "$3,489.55",
-      change: "+2.16%",
+      price: "$3,463.49",
+      change: "+0.12%",
       amount: "0",
       value: "$0.00",
     },
     {
-      icon: <SiBinance className="text-[#F3BA2F] size-8" />,
+      icon: <SiBinance className="text-bnbYellow size-10" />,
       name: "BNB",
       fullName: "BNB Smart Chain",
-      price: "$696.52",
-      change: "+0.40%",
+      price: "$700.73",
+      change: "+1.17%",
       amount: "0",
       value: "$0.00",
     },
@@ -65,77 +70,113 @@ export default function Home() {
         activeTab={activeTab}
         onTabChange={setActiveTab}
       />
-      <main className="min-h-screen bg-white pb-20">
-        {/* Wallet Section */}
+      <main className="min-h-[200vh] bg-white pb-20">
         <div className="max-w-[520px] mx-auto px-4">
-          <div className="flex items-center">
-            <button
-              type="button"
-              onClick={() => setHideBalance(!hideBalance)}
-              className="hover:bg-slateGray/5 rounded-full transition-colors pr-2"
-            >
-              {hideBalance ? (
-                <BsEyeSlashFill className="text-darkSlateGray size-5" />
-              ) : (
-                <BsEyeFill className="text-darkSlateGray size-5" />
-              )}
+          {/* Search Bar */}
+          <div className="relative mt-2">
+            <IoSearchOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-5" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="w-full bg-softWhite rounded-full py-2 pl-12 pr-4 text-[15px] outline-none"
+            />
+          </div>
+
+          {/* Wallet Section */}
+          <div className="mt-4">
+            <div className="flex justify-between items-start">
+              <div className="">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setHideBalance(!hideBalance)}
+                    className="hover:bg-lightGray rounded-full transition-colors"
+                  >
+                    {hideBalance ? (
+                      <BsEyeSlashFill className="text-blueSteel size-5" />
+                    ) : (
+                      <BsEyeFill className="text-blueSteel size-5" />
+                    )}
+                  </button>
+                  <span className="text-[15px]">Main Wallet</span>
+                  <TiArrowSortedDown className="text-blueSteel size-4" />
+                </div>
+                <div className="">
+                  <span className="text-[32px] font-semibold">
+                    {displayAmount}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-5">
+                <button title="copy" className="icons-container">
+                  <BiSolidCopy className="icons-container-child" />
+                </button>
+                <button title="scan" className="icons-container">
+                  <RiQrScan2Line className="icons-container-child" />
+                </button>
+                <button title="notification" className="icons-container">
+                  <RiNotification2Fill className="icons-container-child" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex justify-between mt-6 px-4">
+            <button className="flex flex-col items-center gap-2">
+              <div className="p-4 bg-softWhite rounded-full">
+                <IoIosArrowUp className="size-6" />
+              </div>
+              <span className="text-sm ">Send</span>
             </button>
-            <span className="text-darkSlateGray font-medium">Main Wallet</span>
-
-            <TiArrowSortedDown className="text-darkSlateGray size-4" />
+            <button className="flex flex-col items-center gap-2">
+              <div className="p-4 bg-softWhite rounded-full">
+                <IoIosArrowDown className="size-6 " />
+              </div>
+              <span className="text-sm">Receive</span>
+            </button>
+            <button className="flex flex-col items-center gap-2">
+              <div className="p-4 bg-softWhite rounded-full">
+                <RiMoneyDollarCircleLine className="size-6 " />
+              </div>
+              <span className="text-sm">Buy</span>
+            </button>
+            <button className="flex flex-col items-center gap-2">
+              <div className="p-4 bg-softWhite rounded-full">
+                <BsBank2 className="size-6 " />
+              </div>
+              <span className="text-sm ">Sell</span>
+            </button>
+            <button className="flex flex-col items-center gap-2">
+              <div className="p-4 bg-softWhite rounded-full">
+                <MdHistory className="size-6 " />
+              </div>
+              <span className="text-sm ">History</span>
+            </button>
           </div>
 
-          <div className="flex items-center justify-between mt-2">
-            <div className="flex items-center gap-2">
-              <span className="text-charcoalGray text-3xl font-semibold">
-                {displayAmount}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                title="copy address"
-                className="p-2 bg-slateGray/5 rounded-lg transition-colors"
-              >
-                <BiSolidCopy className="text-darkSlateGray size-5" />
-              </button>
-              <button
-                title="scan QR"
-                className="p-2 bg-slateGray/5 rounded-lg transition-colors"
-              >
-                <RiQrScan2Line className="text-darkSlateGray size-5" />
-              </button>
-              <button
-                title="notifications"
-                className="p-2 bg-slateGray/5 rounded-lg transition-colors"
-              >
-                <RiNotification2Fill className="text-darkSlateGray size-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Tabs */}
-        <div className="max-w-[520px] mx-auto px-4 mt-4">
+          {/* Tabs */}
           {showHomeTabs && (
-            <div className="flex justify-around gap-6">
+            <div className="flex justify-around  mt-6">
               {tabs.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`pb-2 px-1 relative font-medium ${
-                    activeTab === tab ? "text-charcoalGray" : "text-slateGray"
+                  className={`py-3 px-6 relative ${
+                    activeTab === tab ? "text-charcoalBlue" : "text-blueSteel"
                   }`}
                 >
                   {tab}
                   {activeTab === tab && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 w-[40%] mx-auto bg-seaGreen rounded-full" />
+                    <div className="absolute bottom-0 left-0 right-0 h-[3px] w-[25%] mx-auto bg-electricBlue" />
                   )}
                 </button>
               ))}
             </div>
           )}
 
-          {/* Crypto Listings */}
+          {/* Crypto List */}
           {activeTab === "Crypto" && (
             <div className="mt-4 space-y-4">
               {cryptoData.map((crypto) => (
@@ -147,31 +188,38 @@ export default function Home() {
                     <div className="flex-shrink-0">{crypto.icon}</div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-charcoalGray">
-                          {crypto.name}
-                        </span>
-                        <span className="text-slateGray bg-slateGray/5 text-sm rounded-md p-[0.15rem]">
+                        <span className="font-semibold">{crypto.name}</span>
+                        <span className="text-blueSteel text-[13px] bg-softWhite px-1 py-0.5 rounded">
                           {crypto.fullName}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <span className="text-slateGray">{crypto.price}</span>
-                        <span className="text-seaGreen">{crypto.change}</span>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="text-blueSteel text-[15px]">
+                          {crypto.price}
+                        </span>
+                        <span className="text-positiveGreen text-[15px]">
+                          {crypto.change}
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-charcoalGray">{crypto.amount}</div>
-                    <div className="text-slateGray text-sm">{crypto.value}</div>
+                    <div className="font-semibold">{crypto.amount}</div>
+                    <div className="text-blueSteel text-[15px] mt-0.5">
+                      {crypto.value}
+                    </div>
                   </div>
                 </div>
               ))}
+
+              <p className="text-electricBlue text-center cursor-pointer">
+                Manage Crypto
+              </p>
             </div>
           )}
 
-          {/* NFTs Tab Content */}
           {activeTab === "NFTs" && (
-            <div className="mt-4 text-center text-slateGray">No NFTs found</div>
+            <div className="mt-4 text-center text-blueSteel">No NFTs found</div>
           )}
         </div>
       </main>
