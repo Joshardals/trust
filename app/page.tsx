@@ -147,22 +147,22 @@ export default function Home() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-between mt-6 px-4">
+          <div className="grid grid-cols-5 gap-5 mt-6 px-4">
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <FaArrowUp className="size-6" />
+                <FaArrowUp className="size-5" />
               </div>
               <span className="text-sm ">Send</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <FaArrowDown className="size-6 " />
+                <FaArrowDown className="size-5 " />
               </div>
               <span className="text-sm">Receive</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <FaCreditCard className="size-6 " />
+                <FaCreditCard className="size-5 " />
               </div>
               <span className="text-sm">Buy</span>
             </button>
@@ -173,7 +173,7 @@ export default function Home() {
                   width={50}
                   height={50}
                   alt="transaction history"
-                  className="size-6"
+                  className="size-5"
                 />
               </div>
               <span className="text-sm ">Sell</span>
@@ -186,7 +186,7 @@ export default function Home() {
                   width={50}
                   height={50}
                   alt="transaction history"
-                  className="size-6"
+                  className="size-5"
                 />
               </div>
               <span className="text-sm ">History</span>
