@@ -4,9 +4,10 @@
 import { useEffect, useState } from "react";
 import GearIcon from "../ui/GearIcon";
 import DuoToggleIcon from "../ui/DuoToggle";
+import { JSX } from "react/jsx-runtime";
 
 interface HeaderProps {
-  amount: string | any;
+  amount: string | JSX.Element;
   activeTab: "Crypto" | "NFTs";
   onTabChange: (tab: "Crypto" | "NFTs") => void;
 }
