@@ -2,18 +2,14 @@
 "use client";
 
 import { Header } from "./_components/shared/Header";
-import { RiNotification2Fill, RiQrScan2Line } from "react-icons/ri";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { BiSolidCopy } from "react-icons/bi";
 import { useState, useEffect } from "react";
-import { FaBitcoin, FaEthereum } from "react-icons/fa";
+import { FaBitcoin, FaCreditCard } from "react-icons/fa";
 import { SiBinance } from "react-icons/si";
 import { TiArrowSortedDown } from "react-icons/ti";
-import { IoSearchOutline } from "react-icons/io5";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { BsBank2 } from "react-icons/bs";
-import { MdHistory } from "react-icons/md";
-import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
+import Image from "next/image";
+import EthereumIcon from "./_components/ui/EthereumIcon";
 
 export default function Home() {
   const tabs = ["Crypto", "NFTs"] as const;
@@ -44,7 +40,8 @@ export default function Home() {
       value: "$0.00",
     },
     {
-      icon: <FaEthereum className="text-ethBlue size-10" />,
+      // icon: <FaEthereum className="text-ethBlue size-10" />,
+      icon: <EthereumIcon className="size-10" />,
       name: "ETH",
       fullName: "Ethereum",
       price: "$3,463.49",
@@ -70,11 +67,20 @@ export default function Home() {
         activeTab={activeTab}
         onTabChange={setActiveTab}
       />
-      <main className="min-h-[200vh] bg-white pb-20">
+      <main className="min-h-screen bg-white pb-20">
         <div className="max-w-[520px] mx-auto px-4">
           {/* Search Bar */}
           <div className="relative mt-2">
-            <IoSearchOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-5" />
+            {/* <IoSearchOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-5" /> */}
+
+            <Image
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-5"
+              src="/search.png"
+              width={64}
+              height={64}
+              alt="Search Icon"
+            />
+
             <input
               type="text"
               placeholder="Search"
@@ -110,13 +116,31 @@ export default function Home() {
 
               <div className="flex items-center gap-5">
                 <button title="copy" className="icons-container">
-                  <BiSolidCopy className="icons-container-child" />
+                  <Image
+                    src="/copy.png"
+                    width={50}
+                    height={50}
+                    alt="copy"
+                    className="size-5"
+                  />
                 </button>
                 <button title="scan" className="icons-container">
-                  <RiQrScan2Line className="icons-container-child" />
+                  <Image
+                    src="/qr.png"
+                    width={50}
+                    height={50}
+                    alt="qr"
+                    className="size-5"
+                  />
                 </button>
                 <button title="notification" className="icons-container">
-                  <RiNotification2Fill className="icons-container-child" />
+                  <Image
+                    src="/notifs.png"
+                    width={50}
+                    height={50}
+                    alt="notification"
+                    className="size-5"
+                  />
                 </button>
               </div>
             </div>
@@ -126,31 +150,44 @@ export default function Home() {
           <div className="flex justify-between mt-6 px-4">
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <IoIosArrowUp className="size-6" />
+                <FaArrowUp className="size-6" />
               </div>
               <span className="text-sm ">Send</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <IoIosArrowDown className="size-6 " />
+                <FaArrowDown className="size-6 " />
               </div>
               <span className="text-sm">Receive</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <RiMoneyDollarCircleLine className="size-6 " />
+                <FaCreditCard className="size-6 " />
               </div>
               <span className="text-sm">Buy</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <BsBank2 className="size-6 " />
+                <Image
+                  src="/bank.png"
+                  width={50}
+                  height={50}
+                  alt="transaction history"
+                  className="size-6"
+                />
               </div>
               <span className="text-sm ">Sell</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <MdHistory className="size-6 " />
+                {/* <MdHistory className="size-6 " /> */}
+                <Image
+                  src="/deadline.png"
+                  width={50}
+                  height={50}
+                  alt="transaction history"
+                  className="size-6"
+                />
               </div>
               <span className="text-sm ">History</span>
             </button>
@@ -213,7 +250,7 @@ export default function Home() {
               ))}
 
               <p className="text-electricBlue text-center cursor-pointer">
-                Manage Crypto
+                Manage crypto
               </p>
             </div>
           )}

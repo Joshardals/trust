@@ -1,9 +1,9 @@
 // Header.tsx
 "use client";
 
-import { TbSettingsFilled } from "react-icons/tb";
-import { SiGooglecampaignmanager360 } from "react-icons/si";
 import { useEffect, useState } from "react";
+import GearIcon from "../ui/GearIcon";
+import DuoToggleIcon from "../ui/DuoToggle";
 
 interface HeaderProps {
   amount: number | string;
@@ -48,7 +48,13 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
             title="settings"
             className="p-2 hover:bg-lightGray rounded-full transition-colors"
           >
-            <TbSettingsFilled className="text-blueSteel size-6" />
+            {/* <TbSettingsFilled className="text-blueSteel size-6" /> */}
+            <GearIcon
+              width={32}
+              height={32}
+              color="#929aa8"
+              className="size-6"
+            />
           </button>
 
           <h1 className="text-lg font-bold">{showAmount ? amount : "Home"}</h1>
@@ -57,23 +63,30 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
             title="manage crypto"
             className="p-2 hover:bg-lightGray rounded-full transition-colors"
           >
-            <SiGooglecampaignmanager360 className="text-blueSteel size-5" />
+            {/* <SiGooglecampaignmanager360 className="text-blueSteel size-5" /> */}
+
+            <DuoToggleIcon
+              width={32}
+              height={32}
+              color="#929aa8"
+              className="size-6"
+            />
           </button>
         </div>
 
         {showTabs && (
-          <div className="flex justify-around border-b border-slateGray/10">
+          <div className="flex justify-around border-b border-blueSteel/5">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => onTabChange(tab)}
                 className={`py-3 px-6 relative ${
-                  activeTab === tab ? "text-charcoalGray" : "text-slateGray"
+                  activeTab === tab ? "text-charcoalGray" : "text-blueSteel"
                 }`}
               >
                 {tab}
                 {activeTab === tab && (
-                  <div className="absolute bottom-0 left-0 right-0 h-[2px] w-[22.2%] mx-auto bg-seaGreen" />
+                  <div className="absolute bottom-0 left-0 right-0 h-[3px] w-[25%] mx-auto bg-electricBlue" />
                 )}
               </button>
             ))}
