@@ -249,7 +249,7 @@ export default function Home() {
                 </div>
               ))}
 
-              <p className="text-electricBlue text-center text-xs cursor-pointer">
+              <p className="text-electricBlue text-center text-sm cursor-pointer">
                 Manage crypto
               </p>
             </div>
