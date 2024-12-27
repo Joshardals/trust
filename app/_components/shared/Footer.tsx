@@ -1,9 +1,6 @@
 "use client";
-import { MdHomeFilled } from "react-icons/md";
-import { FaArrowRightArrowLeft } from "react-icons/fa6";
-import { IoCompass } from "react-icons/io5";
-import { RiCopperCoinFill } from "react-icons/ri";
 import { useState } from "react";
+import Image from "next/image";
 
 export function Footer() {
   const [activeTab, setActiveTab] = useState("Home");
@@ -11,19 +8,23 @@ export function Footer() {
   const navItems = [
     {
       name: "Home",
-      icon: <MdHomeFilled className="size-6" />,
+      activeIcon: "/home-active.jpg",
+      inactiveIcon: "/home.jpg",
     },
     {
       name: "Swap",
-      icon: <FaArrowRightArrowLeft className="size-5" />,
+      activeIcon: "/swap-active.jpg",
+      inactiveIcon: "/swap.jpg",
     },
     {
       name: "Earn",
-      icon: <RiCopperCoinFill className="size-6" />,
+      activeIcon: "/earn-active.jpg",
+      inactiveIcon: "/earn.jpg",
     },
     {
       name: "Discover",
-      icon: <IoCompass className="size-6" />,
+      activeIcon: "/discover-active.jpg",
+      inactiveIcon: "/discover.jpg",
     },
   ];
 
@@ -39,7 +40,15 @@ export function Footer() {
                 activeTab === item.name ? "text-electricBlue" : "text-slateGray"
               }`}
             >
-              {item.icon}
+              <Image
+                src={
+                  activeTab === item.name ? item.activeIcon : item.inactiveIcon
+                }
+                width={50}
+                height={50}
+                alt={item.name}
+                className="size-5"
+              />
               <span className="text-[11px] font-normal">{item.name}</span>
             </button>
           ))}
