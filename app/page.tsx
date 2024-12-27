@@ -3,10 +3,7 @@
 
 import { Header } from "./_components/shared/Header";
 import { useState, useEffect } from "react";
-import { FaBitcoin } from "react-icons/fa";
-import { SiBinance } from "react-icons/si";
 import Image from "next/image";
-import EthereumIcon from "./_components/ui/EthereumIcon";
 
 export default function Home() {
   const tabs = ["Crypto", "NFTs"] as const;
