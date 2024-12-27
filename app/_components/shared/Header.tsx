@@ -2,9 +2,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import GearIcon from "../ui/GearIcon";
-import DuoToggleIcon from "../ui/DuoToggle";
 import { JSX } from "react/jsx-runtime";
+import Image from "next/image";
 
 interface HeaderProps {
   amount: string | JSX.Element;
@@ -49,12 +48,12 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
             title="settings"
             className="p-2 hover:bg-lightGray rounded-full transition-colors"
           >
-            {/* <TbSettingsFilled className="text-blueSteel size-6" /> */}
-            <GearIcon
-              width={32}
-              height={32}
-              color="#929aa8"
-              className="size-6"
+            <Image
+              src="/gear.jpg"
+              width={50}
+              height={50}
+              alt="Settings"
+              className="size-5"
             />
           </button>
 
@@ -64,13 +63,12 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
             title="manage crypto"
             className="p-2 hover:bg-lightGray rounded-full transition-colors"
           >
-            {/* <SiGooglecampaignmanager360 className="text-blueSteel size-5" /> */}
-
-            <DuoToggleIcon
-              width={32}
-              height={32}
-              color="#929aa8"
-              className="size-6"
+            <Image
+              src="/other.jpg"
+              width={50}
+              height={50}
+              alt="Settings"
+              className="size-5"
             />
           </button>
         </div>

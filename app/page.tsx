@@ -2,12 +2,9 @@
 "use client";
 
 import { Header } from "./_components/shared/Header";
-import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { useState, useEffect } from "react";
-import { FaBitcoin, FaCreditCard } from "react-icons/fa";
+import { FaBitcoin } from "react-icons/fa";
 import { SiBinance } from "react-icons/si";
-import { TiArrowSortedDown } from "react-icons/ti";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import Image from "next/image";
 import EthereumIcon from "./_components/ui/EthereumIcon";
 
@@ -94,10 +91,10 @@ export default function Home() {
             {/* <IoSearchOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-5" /> */}
 
             <Image
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-5"
-              src="/search.png"
-              width={64}
-              height={64}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-4"
+              src="/search.jpg"
+              width={50}
+              height={50}
               alt="Search Icon"
             />
 
@@ -119,13 +116,31 @@ export default function Home() {
                     className="hover:bg-lightGray rounded-full transition-colors"
                   >
                     {hideBalance ? (
-                      <BsEyeSlashFill className="text-blueSteel size-5" />
+                      <Image
+                        src="/eye-slash.jpg"
+                        width={50}
+                        height={50}
+                        alt="copy"
+                        className="h-4 w-5"
+                      />
                     ) : (
-                      <BsEyeFill className="text-blueSteel size-5" />
+                      <Image
+                        src="/eye.jpg"
+                        width={50}
+                        height={50}
+                        alt="copy"
+                        className="h-4 w-5"
+                      />
                     )}
                   </button>
                   <span className="text-[15px]">Main Wallet</span>
-                  <TiArrowSortedDown className="text-blueSteel size-4" />
+                  <Image
+                    src="/arrow-down.jpg"
+                    width={50}
+                    height={50}
+                    alt="copy"
+                    className="w-2.5 h-1.5"
+                  />
                 </div>
                 <div className="">
                   <span className="text-[32px] font-semibold">
@@ -137,7 +152,7 @@ export default function Home() {
               <div className="flex items-center gap-5">
                 <button title="copy" className="icons-container">
                   <Image
-                    src="/copy.png"
+                    src="/copy.jpg"
                     width={50}
                     height={50}
                     alt="copy"
@@ -146,7 +161,7 @@ export default function Home() {
                 </button>
                 <button title="scan" className="icons-container">
                   <Image
-                    src="/qr.png"
+                    src="/qr.jpg"
                     width={50}
                     height={50}
                     alt="qr"
@@ -155,7 +170,7 @@ export default function Home() {
                 </button>
                 <button title="notification" className="icons-container">
                   <Image
-                    src="/notifs.png"
+                    src="/notifs.jpg"
                     width={50}
                     height={50}
                     alt="notification"
@@ -170,29 +185,47 @@ export default function Home() {
           <div className="grid grid-cols-5 gap-5 mt-6 px-4">
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <FaArrowUp className="size-5" />
+                <Image
+                  src="/send.jpg"
+                  width={50}
+                  height={50}
+                  alt="send"
+                  className="size-5"
+                />
               </div>
               <span className="text-sm ">Send</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <FaArrowDown className="size-5 " />
+                <Image
+                  src="/receive.jpg"
+                  width={50}
+                  height={50}
+                  alt="receive"
+                  className="size-5"
+                />
               </div>
               <span className="text-sm">Receive</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                <FaCreditCard className="size-5 " />
+                <Image
+                  src="/card.jpg"
+                  width={50}
+                  height={50}
+                  alt="buy"
+                  className="size-5"
+                />
               </div>
               <span className="text-sm">Buy</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
                 <Image
-                  src="/bank.png"
+                  src="/bank.jpg"
                   width={50}
                   height={50}
-                  alt="transaction history"
+                  alt="sell"
                   className="size-5"
                 />
               </div>
@@ -200,12 +233,11 @@ export default function Home() {
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
-                {/* <MdHistory className="size-6 " /> */}
                 <Image
-                  src="/deadline.png"
+                  src="/history.jpg"
                   width={50}
                   height={50}
-                  alt="transaction history"
+                  alt="history"
                   className="size-5"
                 />
               </div>
