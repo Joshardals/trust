@@ -48,6 +48,7 @@ export function Footer() {
                 height={50}
                 alt={item.name}
                 className="size-5"
+                priority={true}
               />
               <span className="text-[11px] font-normal">{item.name}</span>
             </button>
