@@ -29,7 +29,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-blueSteel/50 z-50">
+    <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-blueSteel/20 z-50">
       <div className="max-w-[520px] mx-auto px-4">
         <nav className="flex items-center justify-between">
           {navItems.map((item) => {
@@ -40,7 +40,7 @@ export function Footer() {
                 key={item.name}
                 onClick={() => setActiveTab(item.name)}
                 className={`flex flex-col items-center gap-1 py-2 px-4 ${
-                  isActive ? "text-electricBlue" : "text-slateGray"
+                  isActive ? "text-electricBlue" : "text-blueSteel"
                 }`}
               >
                 <Image
