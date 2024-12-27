@@ -39,7 +39,7 @@ export default function Home() {
 
   const cryptoData = [
     {
-      icon: <FaBitcoin className="text-btcOrange size-10" />,
+      icon: "/btc.jpg",
       name: "BTC",
       fullName: "Bitcoin",
       price: formatWithCustomDollarSign(formatCurrency(98994.1)),
@@ -48,7 +48,7 @@ export default function Home() {
       value: formatWithCustomDollarSign(formatCurrency(0)),
     },
     {
-      icon: <EthereumIcon className="size-10" />,
+      icon: "/ethereum.jpg",
       name: "ETH",
       fullName: "Ethereum",
       price: formatWithCustomDollarSign(formatCurrency(3463.49)),
@@ -57,7 +57,7 @@ export default function Home() {
       value: formatWithCustomDollarSign(formatCurrency(0)),
     },
     {
-      icon: <SiBinance className="text-bnbYellow size-10" />,
+      icon: "/bnb.jpg",
       name: "BNB",
       fullName: "BNB Smart Chain",
       price: formatWithCustomDollarSign(formatCurrency(700.73)),
@@ -286,7 +286,16 @@ export default function Home() {
                   className="flex items-center justify-between py-2"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex-shrink-0">{crypto.icon}</div>
+                    <div className="flex-shrink-0">
+                      <Image
+                        src={crypto.icon}
+                        width={50}
+                        height={50}
+                        alt={crypto.name}
+                        className="size-10"
+                        quality={100}
+                      />
+                    </div>
                     <div>
                       <div className="flex items-center gap-2">
                         <span>{crypto.name}</span>
