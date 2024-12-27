@@ -76,7 +76,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
         </div>
 
         {showTabs && (
-          <div className="flex justify-around border-b border-blueSteel/50">
+          <div className="flex justify-around border-b border-blueSteel/30">
             {tabs.map((tab) => (
               <button
                 key={tab}
