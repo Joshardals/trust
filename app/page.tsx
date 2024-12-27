@@ -81,7 +81,7 @@ export default function Home() {
         activeTab={activeTab}
         onTabChange={setActiveTab}
       />
-      <main className="min-h-screen bg-white pb-20">
+      <main className="min-h-screen bg-white pb-20 overflow-auto">
         <div className="max-w-[520px] mx-auto px-4">
           {/* Search Bar */}
           <div className="relative mt-2">

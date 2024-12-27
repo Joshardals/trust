@@ -41,7 +41,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
   }, []);
 
   return (
-    <header className="bg-white sticky top-0 left-0 right-0 z-50">
+    <header className="bg-white sticky top-0 left-0 right-0 z-50 [overscroll-behavior-y:none]">
       <div className="max-w-[520px] mx-auto">
         <div className="flex items-center justify-between px-4 py-2">
           <button
