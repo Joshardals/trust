@@ -54,6 +54,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
               height={50}
               alt="Settings"
               className="size-5"
+              quality={100}
             />
           </button>
 
@@ -69,6 +70,7 @@ export function Header({ amount, activeTab, onTabChange }: HeaderProps) {
               height={50}
               alt="Settings"
               className="size-5"
+              quality={100}
             />
           </button>
         </div>

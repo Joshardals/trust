@@ -96,6 +96,7 @@ export default function Home() {
               width={50}
               height={50}
               alt="Search Icon"
+              quality={100}
             />
 
             <input
@@ -115,23 +116,25 @@ export default function Home() {
                     onClick={() => setHideBalance(!hideBalance)}
                     className="hover:bg-lightGray rounded-full transition-colors"
                   >
-                    {hideBalance ? (
-                      <Image
-                        src="/eye-slash.jpg"
-                        width={50}
-                        height={50}
-                        alt="copy"
-                        className="h-4 w-5"
-                      />
-                    ) : (
-                      <Image
-                        src="/eye.jpg"
-                        width={50}
-                        height={50}
-                        alt="copy"
-                        className="h-4 w-5"
-                      />
-                    )}
+                    <Image
+                      src={hideBalance ? "/eye-slash.jpg" : "/eye.jpg"}
+                      width={50}
+                      height={50}
+                      alt="toggle balance visibility"
+                      className="h-4 w-5"
+                      priority={true}
+                      quality={100}
+                    />
+                    {/* Preload the other state of the image */}
+                    <Image
+                      src={!hideBalance ? "/eye-slash.jpg" : "/eye.jpg"}
+                      width={50}
+                      height={50}
+                      alt="toggle balance visibility"
+                      className="hidden"
+                      priority={true}
+                      quality={100}
+                    />
                   </button>
                   <span className="text-[15px]">Main Wallet</span>
                   <Image
@@ -140,6 +143,7 @@ export default function Home() {
                     height={50}
                     alt="copy"
                     className="w-2.5 h-1.5"
+                    quality={100}
                   />
                 </div>
                 <div className="">
@@ -157,6 +161,7 @@ export default function Home() {
                     height={50}
                     alt="copy"
                     className="size-4"
+                    quality={100}
                   />
                 </button>
                 <button title="scan" className="icons-container">
@@ -166,6 +171,7 @@ export default function Home() {
                     height={50}
                     alt="qr"
                     className="size-4"
+                    quality={100}
                   />
                 </button>
                 <button title="notification" className="icons-container">
@@ -175,6 +181,7 @@ export default function Home() {
                     height={50}
                     alt="notification"
                     className="size-4"
+                    quality={100}
                   />
                 </button>
               </div>
@@ -191,6 +198,7 @@ export default function Home() {
                   height={50}
                   alt="send"
                   className="size-5"
+                  quality={100}
                 />
               </div>
               <span className="text-sm ">Send</span>
@@ -203,6 +211,7 @@ export default function Home() {
                   height={50}
                   alt="receive"
                   className="size-5"
+                  quality={100}
                 />
               </div>
               <span className="text-sm">Receive</span>
@@ -215,6 +224,7 @@ export default function Home() {
                   height={50}
                   alt="buy"
                   className="size-5"
+                  quality={100}
                 />
               </div>
               <span className="text-sm">Buy</span>
@@ -227,6 +237,7 @@ export default function Home() {
                   height={50}
                   alt="sell"
                   className="size-5"
+                  quality={100}
                 />
               </div>
               <span className="text-sm ">Sell</span>
@@ -239,6 +250,7 @@ export default function Home() {
                   height={50}
                   alt="history"
                   className="size-5"
+                  quality={100}
                 />
               </div>
               <span className="text-sm ">History</span>
