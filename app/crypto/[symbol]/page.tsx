@@ -46,11 +46,11 @@ export default async function CryptoDetail({
               <span>{crypto.name}</span>
               <div className="text-blueSteel text-sm divide-x divide-blueSteel/30">
                 <span className="px-2">COIN</span>
-                <span className="px-2">{crypto.name}</span>
+                <span className="pl-2">{crypto.name}</span>
               </div>
             </div>
 
-            <div className="space-x-2">
+            <div className="space-x-4">
               <button
                 title="nofitifcation"
                 className="p-2 hover:bg-lightGray rounded-full transition-colors"
