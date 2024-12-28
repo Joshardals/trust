@@ -12,7 +12,7 @@ interface CryptoDetailProps {
 }
 
 export default function CryptoDetail({ params }: CryptoDetailProps) {
-  const [timeFrame, setTimeFrame] = useState("1D");
+//   const [timeFrame, setTimeFrame] = useState("1D");
 
   const getCryptoData = (symbol: string) => {
     return cryptoData.find((crypto) => crypto.name === symbol.toUpperCase());
@@ -55,7 +55,7 @@ export default function CryptoDetail({ params }: CryptoDetailProps) {
               alt="Refresh"
               width={50}
               height={50}
-              className="size-5"
+              className="size-4"
               quality={100}
             />
           </button>
@@ -65,7 +65,7 @@ export default function CryptoDetail({ params }: CryptoDetailProps) {
               alt="Info"
               width={50}
               height={50}
-              className="size-5"
+              className="size-4"
               quality={100}
             />
           </button>
