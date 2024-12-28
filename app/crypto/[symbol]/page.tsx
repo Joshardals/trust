@@ -42,7 +42,7 @@ export default async function CryptoDetail({
               />
             </Link>
 
-            <div className="ml-4 flex-1 flex flex-col items-center">
+            <div className="ml-6 flex-1 flex flex-col items-center">
               <span>{crypto.name}</span>
               <div className="text-blueSteel text-sm divide-x divide-blueSteel/30">
                 <span className="px-2">COIN</span>
@@ -66,7 +66,7 @@ export default async function CryptoDetail({
               </button>
 
               <button
-                title="manage crypto"
+                title="info"
                 className="p-2 hover:bg-lightGray rounded-full transition-colors"
               >
                 <Image
