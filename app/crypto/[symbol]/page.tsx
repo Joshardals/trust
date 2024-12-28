@@ -19,9 +19,9 @@ export default async function CryptoDetail({
     return <div>Cryptocurrency not found</div>;
   }
 
-//   const numericPrice = parseFloat(
-//     crypto.price.props.children[1].replace(/,/g, "")
-//   );
+  const numericPrice = parseFloat(
+    crypto.price.props.children[1].replace(/,/g, "")
+  );
 
   return (
     <div className="min-h-screen max-w-[520px] mx-auto">
@@ -40,15 +40,15 @@ export default async function CryptoDetail({
           />
         </Link>
 
-        <div className="bg-red-500 flex-1">
+        <div className="flex-1 flex flex-col items-center">
           <span>{crypto.name}</span>
-          <div className="text-blueSteel text-sm">
-            <span>COIN</span>
-            <span>{crypto.name}</span>
+          <div className="text-blueSteel text-sm divide-x divide-blueSteel/30">
+            <span className="px-2">COIN</span>
+            <span className="px-2">{crypto.name}</span>
           </div>
         </div>
 
-        <div className="space-x-8">
+        <div className="space-x-4">
           <button
             title="nofitifcation"
             className="p-2 hover:bg-lightGray rounded-full transition-colors"
