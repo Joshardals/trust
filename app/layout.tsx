@@ -1,4 +1,3 @@
-import { Footer } from "./_components/shared/Footer";
 import { Roboto } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -23,9 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased ${inter.variable} flex flex-col`}>
-        {/* <Header /> */}
         <div>{children}</div>
-        <Footer />
       </body>
     </html>
   );

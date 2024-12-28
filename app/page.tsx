@@ -4,6 +4,13 @@
 import { Header } from "./_components/shared/Header";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Footer } from "./_components/shared/Footer";
+import {
+  cryptoData,
+  formatCurrency,
+  formatWithCustomDollarSign,
+} from "@/lib/data";
+import Link from "next/link";
 
 export default function Home() {
   const tabs = ["Crypto", "NFTs"] as const;
@@ -11,58 +18,10 @@ export default function Home() {
   const [hideBalance, setHideBalance] = useState(false);
   const [showHomeTabs, setShowHomeTabs] = useState(true);
 
-  const formatWithCustomDollarSign = (amount: string) => {
-    return (
-      <span>
-        <span className="font-sans">$</span>
-        {amount.replace("$", "")}
-      </span>
-    );
-  };
-
-  const formatCurrency = (value: number): string => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(value);
-  };
-
   const amount = formatCurrency(0);
   const displayAmount = hideBalance
     ? "*****"
     : formatWithCustomDollarSign(amount);
-
-  const cryptoData = [
-    {
-      icon: "/btc.jpg",
-      name: "BTC",
-      fullName: "Bitcoin",
-      price: formatWithCustomDollarSign(formatCurrency(98994.1)),
-      change: "+1.34%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/ethereum.jpg",
-      name: "ETH",
-      fullName: "Ethereum",
-      price: formatWithCustomDollarSign(formatCurrency(3463.49)),
-      change: "+0.12%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/bnb.jpg",
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: formatWithCustomDollarSign(formatCurrency(700.73)),
-      change: "+1.17%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -278,7 +237,8 @@ export default function Home() {
           {activeTab === "Crypto" && (
             <div className="mt-4 space-y-4">
               {cryptoData.map((crypto) => (
-                <div
+                <Link
+                  href={`/crypto/${crypto.name.toLowerCase()}`}
                   key={crypto.name}
                   className="flex items-center justify-between py-2"
                 >
@@ -316,7 +276,7 @@ export default function Home() {
                       {crypto.value}
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
 
               <p className="text-electricBlue text-center text-sm cursor-pointer">
@@ -330,6 +290,8 @@ export default function Home() {
           )}
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }
