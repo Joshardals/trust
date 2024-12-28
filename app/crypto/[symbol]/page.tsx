@@ -142,7 +142,7 @@ export default function CryptoDetail({ params }: CryptoDetailProps) {
           Transactions will appear here.
         </p>
         <p className="text-[13px] mt-1">
-          Can't find your transaction?{" "}
+          Can&apos;t find your transaction?{" "}
           <button className="text-[#0052FF]">Check explorer</button>
         </p>
       </div>
