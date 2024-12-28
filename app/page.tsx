@@ -2,18 +2,41 @@
 "use client";
 
 import { Header } from "./_components/shared/Header";
-import { useState, useEffect } from "react";
+import { useState, useEffect, JSX } from "react";
 import Image from "next/image";
 import { Footer } from "./_components/shared/Footer";
-import { formatCurrency } from "@/lib/data";
 import Link from "next/link";
+
+interface CryptoData {
+  id: string;
+  icon: string;
+  name: string;
+  fullName: string;
+  price: number;
+  price_formatted: JSX.Element;
+  change_24h: number;
+  amount: string;
+  value: JSX.Element;
+}
+
+const formatCurrency = (value: number): string => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+};
 
 export default function Home() {
   const tabs = ["Crypto", "NFTs"] as const;
   const [activeTab, setActiveTab] = useState<"Crypto" | "NFTs">("Crypto");
   const [hideBalance, setHideBalance] = useState(false);
   const [showHomeTabs, setShowHomeTabs] = useState(true);
+  const [cryptoData, setCryptoData] = useState<CryptoData[]>([]);
+  // const [totalBalance, setTotalBalance] = useState(0);
 
+  const totalBalance = 0;
   const formatWithCustomDollarSign = (amount: string) => {
     return (
       <span>
@@ -23,67 +46,63 @@ export default function Home() {
     );
   };
 
-  const amount = formatCurrency(0);
-  const displayAmount = hideBalance
-    ? "*****"
-    : formatWithCustomDollarSign(amount);
+  useEffect(() => {
+    const fetchCryptoData = async () => {
+      try {
+        const response = await fetch(
+          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,ripple,solana,tether&vs_currencies=usd&include_24hr_change=true",
+          { next: { revalidate: 60 } }
+        );
+        const data = await response.json();
 
-  const cryptoData = [
-    {
-      icon: "/btc.jpg",
-      name: "BTC",
-      fullName: "Bitcoin",
-      price: formatWithCustomDollarSign(formatCurrency(98994.1)),
-      change: "+1.34%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/ethereum.jpg",
-      name: "ETH",
-      fullName: "Ethereum",
-      price: formatWithCustomDollarSign(formatCurrency(3463.49)),
-      change: "+0.12%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/bnb.jpg",
-      name: "BNB",
-      fullName: "BNB Smart Chain",
-      price: formatWithCustomDollarSign(formatCurrency(700.73)),
-      change: "+1.17%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/xrp.jpg",
-      name: "XRP",
-      fullName: "XRP",
-      price: formatWithCustomDollarSign(formatCurrency(0.64)),
-      change: "+0.85%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/solana.jpg",
-      name: "SOL",
-      fullName: "Solana",
-      price: formatWithCustomDollarSign(formatCurrency(112.45)),
-      change: "+2.31%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/usdt.jpg",
-      name: "USDT",
-      fullName: "Tron",
-      price: formatWithCustomDollarSign(formatCurrency(1.0)),
-      change: "+0.01%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-  ];
+        const cryptoMapping = [
+          { id: "bitcoin", name: "BTC", fullName: "Bitcoin", icon: "/btc.jpg" },
+          {
+            id: "ethereum",
+            name: "ETH",
+            fullName: "Ethereum",
+            icon: "/ethereum.jpg",
+          },
+          {
+            id: "binancecoin",
+            name: "BNB",
+            fullName: "BNB Smart Chain",
+            icon: "/bnb.jpg",
+          },
+          { id: "ripple", name: "XRP", fullName: "XRP", icon: "/xrp.jpg" },
+          {
+            id: "solana",
+            name: "SOL",
+            fullName: "Solana",
+            icon: "/solana.jpg",
+          },
+          { id: "tether", name: "USDT", fullName: "Tether", icon: "/usdt.jpg" },
+        ];
+
+        const formattedData = cryptoMapping.map((coin) => ({
+          id: coin.id,
+          icon: coin.icon,
+          name: coin.name,
+          fullName: coin.fullName,
+          price: data[coin.id].usd,
+          price_formatted: formatWithCustomDollarSign(
+            formatCurrency(data[coin.id].usd)
+          ),
+          change_24h: data[coin.id].usd_24h_change,
+          amount: "0",
+          value: formatWithCustomDollarSign(formatCurrency(0)),
+        }));
+
+        setCryptoData(formattedData);
+      } catch (error) {
+        console.error("Error fetching crypto data:", error);
+      }
+    };
+
+    fetchCryptoData();
+    const interval = setInterval(fetchCryptoData, 60000); // Update every minute
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,16 +117,17 @@ export default function Home() {
   return (
     <>
       <Header
-        amount={hideBalance ? "*****" : formatWithCustomDollarSign(amount)}
+        amount={
+          hideBalance
+            ? "*****"
+            : formatWithCustomDollarSign(formatCurrency(totalBalance))
+        }
         activeTab={activeTab}
         onTabChange={setActiveTab}
       />
       <main className="min-h-screen bg-white pb-20 overflow-auto">
         <div className="max-w-[520px] mx-auto px-4">
-          {/* Search Bar */}
           <div className="relative mt-2">
-            {/* <IoSearchOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-5" /> */}
-
             <Image
               className="absolute left-4 top-1/2 -translate-y-1/2 text-blueSteel size-4"
               src="/search.jpg"
@@ -117,7 +137,6 @@ export default function Home() {
               quality={100}
               priority={true}
             />
-
             <input
               type="text"
               placeholder="Search"
@@ -125,12 +144,12 @@ export default function Home() {
             />
           </div>
 
-          {/* Wallet Section */}
           <div className="mt-4">
             <div className="flex justify-between items-start">
               <div className="">
                 <div className="flex items-center gap-2">
                   <button
+                    title="hide balance"
                     type="button"
                     onClick={() => setHideBalance(!hideBalance)}
                     className="hover:bg-lightGray rounded-full transition-colors"
@@ -144,7 +163,6 @@ export default function Home() {
                       priority={true}
                       quality={100}
                     />
-                    {/* Preload the other state of the image */}
                     <Image
                       src={!hideBalance ? "/eye-slash.jpg" : "/eye.jpg"}
                       width={50}
@@ -168,7 +186,11 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="text-[32px] font-semibold">
-                    {displayAmount}
+                    {hideBalance
+                      ? "*****"
+                      : formatWithCustomDollarSign(
+                          formatCurrency(totalBalance)
+                        )}
                   </span>
                 </div>
               </div>
@@ -211,7 +233,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="grid grid-cols-5 gap-5 mt-6 px-4">
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
@@ -267,7 +288,7 @@ export default function Home() {
                   priority={true}
                 />
               </div>
-              <span className="text-sm ">Sell</span>
+              <span className="text-sm">Sell</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
@@ -281,13 +302,12 @@ export default function Home() {
                   priority={true}
                 />
               </div>
-              <span className="text-sm ">History</span>
+              <span className="text-sm">History</span>
             </button>
           </div>
 
-          {/* Tabs */}
           {showHomeTabs && (
-            <div className="flex justify-around  mt-6">
+            <div className="flex justify-around mt-6">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -305,7 +325,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* Crypto List */}
           {activeTab === "Crypto" && (
             <div className="mt-4 space-y-4">
               {cryptoData.map((crypto) => (
@@ -335,10 +354,16 @@ export default function Home() {
                       </div>
                       <div className="flex items-center gap-2 mt-0.5">
                         <span className="text-blueSteel text-xs">
-                          {crypto.price}
+                          {crypto.price_formatted}
                         </span>
-                        <span className="text-positiveGreen text-xs">
-                          {crypto.change}
+                        <span
+                          className={`text-xs ${
+                            crypto.change_24h >= 0
+                              ? "text-positiveGreen"
+                              : "text-negativeRed"
+                          }`}
+                        >
+                          {crypto.change_24h.toFixed(2)}%
                         </span>
                       </div>
                     </div>

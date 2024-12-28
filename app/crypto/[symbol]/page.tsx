@@ -18,76 +18,59 @@ export default async function CryptoDetail({
     );
   };
 
-  const cryptoData = [
-    {
-      icon: "/btc.jpg",
-      name: "BTC",
-      fullName: "Bitcoin",
-      price: formatWithCustomDollarSign(formatCurrency(98994.1)),
-      change: "+1.34%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
+  const response = await fetch(
+    "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,ripple,solana,tether&vs_currencies=usd&include_24hr_change=true",
+    { next: { revalidate: 60 } }
+  );
+  const priceData = await response.json();
+
+  const cryptoMapping = {
+    btc: { id: "bitcoin", icon: "/btc.jpg", name: "BTC", fullName: "Bitcoin" },
+    eth: {
+      id: "ethereum",
       icon: "/ethereum.jpg",
       name: "ETH",
       fullName: "Ethereum",
-      price: formatWithCustomDollarSign(formatCurrency(3463.49)),
-      change: "+0.12%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
     },
-    {
+    bnb: {
+      id: "binancecoin",
       icon: "/bnb.jpg",
       name: "BNB",
       fullName: "BNB Smart Chain",
-      price: formatWithCustomDollarSign(formatCurrency(700.73)),
-      change: "+1.17%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
     },
-    {
-      icon: "/xrp.jpg",
-      name: "XRP",
-      fullName: "XRP",
-      price: formatWithCustomDollarSign(formatCurrency(0.64)),
-      change: "+0.85%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/solana.jpg",
-      name: "SOL",
-      fullName: "Solana",
-      price: formatWithCustomDollarSign(formatCurrency(112.45)),
-      change: "+2.31%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-    {
-      icon: "/usdt.jpg",
-      name: "USDT",
-      fullName: "Tron",
-      price: formatWithCustomDollarSign(formatCurrency(1.0)),
-      change: "+0.01%",
-      amount: "0",
-      value: formatWithCustomDollarSign(formatCurrency(0)),
-    },
-  ];
-
-  const getCryptoData = (symbol: string) => {
-    return cryptoData.find((crypto) => crypto.name === symbol.toUpperCase());
+    xrp: { id: "ripple", icon: "/xrp.jpg", name: "XRP", fullName: "XRP" },
+    sol: { id: "solana", icon: "/solana.jpg", name: "SOL", fullName: "Solana" },
+    usdt: { id: "tether", icon: "/usdt.jpg", name: "USDT", fullName: "Tether" },
   };
 
-  const crypto = getCryptoData(slug.toUpperCase());
+  const getCryptoData = (symbol: string) => {
+    const mapping =
+      cryptoMapping[symbol.toLowerCase() as keyof typeof cryptoMapping];
+    if (!mapping) return null;
+
+    const price = priceData[mapping.id].usd;
+    const change = priceData[mapping.id].usd_24h_change;
+    const amount = "0"; // This would come from user's wallet data
+    const valueInUSD = parseFloat(amount) * price;
+
+    return {
+      icon: mapping.icon,
+      name: mapping.name,
+      fullName: mapping.fullName,
+      price: formatWithCustomDollarSign(formatCurrency(price)),
+      change: `${change >= 0 ? "+" : ""}${change.toFixed(2)}%`,
+      amount: amount,
+      valueInUSD: valueInUSD,
+      value: formatWithCustomDollarSign(formatCurrency(valueInUSD)),
+      isPositiveChange: change >= 0,
+    };
+  };
+
+  const crypto = getCryptoData(slug);
 
   if (!crypto) {
     return <div>Cryptocurrency not found</div>;
   }
-
-  // const numericPrice = parseFloat(
-  //   crypto.price.props.children[1].replace(/,/g, "")
-  // );
 
   return (
     <>
@@ -139,6 +122,7 @@ export default async function CryptoDetail({
           </div>
         </div>
       </header>
+
       <main className="min-h-screen max-w-[520px] mx-auto px-4 pb-20">
         <div className="bg-[#fdfbee] flex items-start px-4 py-2 space-x-2">
           <div>
@@ -178,8 +162,7 @@ export default async function CryptoDetail({
               alt="approx"
               className="size-2"
             />
-            <p className="text-sm text-blueSteel">{crypto.price}</p>{" "}
-            {/* This is supposed to be the approx value of the crypto coin in usdt, you get?  */}
+            <p className="text-sm text-blueSteel">{crypto.value}</p>{" "}
           </div>
         </div>
 
@@ -267,7 +250,6 @@ export default async function CryptoDetail({
           </button>
         </div>
 
-        {/* Price Footer */}
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-blueSteel/30 pt-4 pb-8 ">
           <div className="max-w-[520px] mx-auto px-4 text-sm">
             <p className="text-blueSteel">Current {crypto.name} price</p>
@@ -275,13 +257,25 @@ export default async function CryptoDetail({
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <span className="">{crypto.price}</span>
-                <span className="text-positiveGreen">{crypto.change}</span>
+                <span
+                  className={
+                    crypto.isPositiveChange
+                      ? "text-positiveGreen"
+                      : "text-negativeRed"
+                  }
+                >
+                  {crypto.change}
+                </span>
                 <div>
                   <Image
-                    src="/uptrend.jpg"
+                    src={
+                      crypto.isPositiveChange
+                        ? "/uptrend.jpg"
+                        : "/downtrend.jpg"
+                    }
                     width={60}
                     height={30}
-                    alt="uptrend"
+                    alt={crypto.isPositiveChange ? "uptrend" : "downtrend"}
                     className=""
                   />
                 </div>
