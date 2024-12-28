@@ -19,9 +19,9 @@ export default async function CryptoDetail({
     return <div>Cryptocurrency not found</div>;
   }
 
-  //   const numericPrice = parseFloat(
-  //     crypto.price.props.children[1].replace(/,/g, "")
-  //   );
+  const numericPrice = parseFloat(
+    crypto.price.props.children[1].replace(/,/g, "")
+  );
 
   return (
     <>
@@ -85,15 +85,25 @@ export default async function CryptoDetail({
               className="size-4"
             />
           </div>
-          <p className="text-xs text-[#c1a94f] font-normal">
-            The {crypto.name} network requires a one-time fee of 1 {crypto.name}{" "}
-            for <br /> account activation <br />
-            <span className="mt-2">
-              <Link href="#" className="text-[#1a11c2]">
+          <div className="text-xs text-[#c1a94f] font-normal space-y-2 flex flex-col">
+            <span>
+              The {crypto.name} network requires a one-time fee of 1{" "}
+              {crypto.name} for <br /> account activation
+            </span>
+            <span>
+              <Link href="#" className="text-[#0701ff] font-medium">
                 Learn more &gt;
               </Link>
             </span>
-          </p>
+          </div>
+        </div>
+
+        {/* Crypto Info */}
+        <div className="mt-4 flex flex-col items-center">
+          <Image src="/xrp.jpg" width={50} height={150} alt="XRP" />
+          <div className="text-[32px] font-semibold">
+            <span>{crypto.amount}</span> <span>{crypto.name}</span>
+          </div>
         </div>
       </main>
     </>
