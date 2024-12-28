@@ -176,7 +176,7 @@ export default async function CryptoDetail({
           />
           <p className="mb-1">Transactions will appear here.</p>
           <p>
-            Can't find your transaction?{" "}
+            Can&apos;t find your transaction?{" "}
             <Link href="#" className="text-blue-600">
               Check explorer
             </Link>
