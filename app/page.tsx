@@ -102,7 +102,7 @@ export default function Home() {
                     quality={100}
                   />
                 </div>
-                <div className="">
+                <div>
                   <span className="text-[32px] font-semibold">
                     {displayAmount}
                   </span>
