@@ -250,46 +250,46 @@ export default async function CryptoDetail({
         </div>
 
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-blueSteel/30 pt-4 pb-14 ">
-          <div className="max-w-[520px] mx-auto px-4 text-sm space-y-2">
-            <p className="text-blueSteel">Current {crypto.name} price</p>
+          <div className="max-w-[520px] mx-auto px-4 text-sm space-y-2 flex items-center justify-between">
+            <div>
+              <p className="text-blueSteel">Current {crypto.name} price</p>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <span className="">{crypto.price}</span>
-                <span
-                  className={
-                    crypto.isPositiveChange
-                      ? "text-positiveGreen"
-                      : "text-negativeRed"
-                  }
-                >
-                  {crypto.change}
-                </span>
-                <div>
-                  <Image
-                    src={
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <span className="">{crypto.price}</span>
+                  <span
+                    className={
                       crypto.isPositiveChange
-                        ? "/uptrend.jpg"
-                        : "/downtrend.jpg"
+                        ? "text-positiveGreen"
+                        : "text-negativeRed"
                     }
-                    width={50}
-                    height={25}
-                    alt={crypto.isPositiveChange ? "uptrend" : "downtrend"}
-                    className=""
-                  />
+                  >
+                    {crypto.change}
+                  </span>
+                  <div>
+                    <Image
+                      src={
+                        crypto.isPositiveChange
+                          ? "/uptrend.jpg"
+                          : "/downtrend.jpg"
+                      }
+                      width={50}
+                      height={25}
+                      alt={crypto.isPositiveChange ? "uptrend" : "downtrend"}
+                      className=""
+                    />
+                  </div>
                 </div>
               </div>
-
-              <div>
-                <Image
-                  src="/arrow-up.jpg"
-                  width={50}
-                  height={50}
-                  alt="arrow-up"
-                  className="w-2.5 h-1.5"
-                />
-              </div>
             </div>
+
+            <Image
+              src="/arrow-up.jpg"
+              width={50}
+              height={50}
+              alt="arrow-up"
+              className="w-2.5 h-1.5"
+            />
           </div>
         </div>
       </main>
