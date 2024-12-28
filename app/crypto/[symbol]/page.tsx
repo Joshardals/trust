@@ -177,7 +177,7 @@ export default async function CryptoDetail({
           <p className="mb-1">Transactions will appear here.</p>
           <p>
             Can&apos;t find your transaction?{" "}
-            <Link href="#" className="text-blue-600">
+            <Link href="#" className="text-[#0701ff]">
               Check explorer
             </Link>
           </p>
@@ -185,7 +185,7 @@ export default async function CryptoDetail({
 
         {/* Buy Button */}
         <div className="mt-8 mb-8 flex justify-center">
-          <button className=" bg-blue-600 text-white py-2 px-8 rounded-xl">
+          <button className=" bg-[#0701ff] text-white py-2 px-8 rounded-xl">
             Buy {crypto.name}
           </button>
         </div>
