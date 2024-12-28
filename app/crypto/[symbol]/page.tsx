@@ -261,7 +261,7 @@ export default async function CryptoDetail({
         </div>
 
         {/* Buy Button */}
-        <div className="mt-8 mb-8 flex justify-center">
+        <div className="mt-8 mb-20 flex justify-center">
           <button className=" bg-[#0701ff] text-white py-2 px-8 rounded-xl">
             Buy {crypto.name}
           </button>
