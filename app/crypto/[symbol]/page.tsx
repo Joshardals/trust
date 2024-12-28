@@ -19,9 +19,9 @@ export default async function CryptoDetail({
     return <div>Cryptocurrency not found</div>;
   }
 
-//   const numericPrice = parseFloat(
-//     crypto.price.props.children[1].replace(/,/g, "")
-//   );
+  //   const numericPrice = parseFloat(
+  //     crypto.price.props.children[1].replace(/,/g, "")
+  //   );
 
   return (
     <div className="min-h-screen max-w-[520px] mx-auto">
@@ -35,7 +35,7 @@ export default async function CryptoDetail({
             width={50}
             height={50}
             alt="home"
-            className="size-5"
+            className="size-4"
             quality={100}
           />
         </Link>
@@ -48,7 +48,7 @@ export default async function CryptoDetail({
           </div>
         </div>
 
-        <div className="space-x-4">
+        <div className="space-x-">
           <button
             title="nofitifcation"
             className="p-2 hover:bg-lightGray rounded-full transition-colors"
@@ -58,7 +58,7 @@ export default async function CryptoDetail({
               width={50}
               height={50}
               alt="notification"
-              className="size-5"
+              className="size-4"
               quality={100}
             />
           </button>
@@ -72,7 +72,7 @@ export default async function CryptoDetail({
               width={50}
               height={50}
               alt="info"
-              className="size-5"
+              className="size-4"
               quality={100}
             />
           </button>
