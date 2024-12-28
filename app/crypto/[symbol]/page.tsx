@@ -28,10 +28,7 @@ export default async function CryptoDetail({
       <header className="bg-white sticky top-0 left-0 right-0 z-50 [overscroll-behavior-y:none]">
         <div className="max-w-[520px] mx-auto">
           <div className="flex items-center justify-between px-4 py-2">
-            <Link
-              href="/"
-              className="p-2 hover:bg-lightGray rounded-full transition-colors"
-            >
+            <Link href="/">
               <Image
                 src="/arrow-back.jpg"
                 width={50}
@@ -44,17 +41,14 @@ export default async function CryptoDetail({
 
             <div className="ml-10 flex-1 flex flex-col items-center">
               <span>{crypto.name}</span>
-              <div className="text-blueSteel text-sm divide-x divide-blueSteel/30">
+              <div className="text-blueSteel font-normal text-sm divide-x divide-blueSteel/30">
                 <span className="px-2">COIN</span>
                 <span className="px-2">{crypto.name}</span>
               </div>
             </div>
 
             <div className="space-x-4">
-              <button
-                title="nofitifcation"
-                className="p-2 hover:bg-lightGray rounded-full transition-colors"
-              >
+              <button title="nofitifcation">
                 <Image
                   src="/notif-off.jpg"
                   width={50}
@@ -65,10 +59,7 @@ export default async function CryptoDetail({
                 />
               </button>
 
-              <button
-                title="info"
-                className="p-2 hover:bg-lightGray rounded-full transition-colors"
-              >
+              <button title="info">
                 <Image
                   src="/info-light.jpg"
                   width={50}
@@ -82,7 +73,29 @@ export default async function CryptoDetail({
           </div>
         </div>
       </header>
-      <main className="min-h-screen max-w-[520px] mx-auto"></main>
+      <main className="min-h-screen max-w-[520px] mx-auto px-4">
+        <div className="bg-[#fdfbee] flex items-start px-4 py-2 space-x-2">
+          <div>
+            <Image
+              src="/info-orange.jpg"
+              width={50}
+              height={50}
+              alt="warning"
+              quality={100}
+              className="size-4"
+            />
+          </div>
+          <p className="text-xs text-[#c1a94f] font-normal">
+            The {crypto.name} network requires a one-time fee of 1 {crypto.name}{" "}
+            for <br /> account activation <br />
+            <span className="mt-2">
+              <Link href="#" className="text-[#1a11c2]">
+                Learn more &gt;
+              </Link>
+            </span>
+          </p>
+        </div>
+      </main>
     </>
   );
 }
