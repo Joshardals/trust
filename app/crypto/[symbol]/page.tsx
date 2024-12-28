@@ -269,7 +269,7 @@ export default async function CryptoDetail({
 
         {/* Price Footer */}
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-blueSteel/30 pt-4 pb-8 ">
-          <div className="max-w-[520px] mx-auto">
+          <div className="max-w-[520px] mx-auto px-4">
             <p className="text-blueSteel">Current {crypto.name} price</p>
 
             <div className="flex items-center justify-between">
