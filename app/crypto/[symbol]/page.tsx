@@ -19,146 +19,63 @@ export default async function CryptoDetail({
     return <div>Cryptocurrency not found</div>;
   }
 
-  const numericPrice = parseFloat(
-    crypto.price.props.children[1].replace(/,/g, "")
-  );
+//   const numericPrice = parseFloat(
+//     crypto.price.props.children[1].replace(/,/g, "")
+//   );
 
   return (
     <div className="min-h-screen max-w-[520px] mx-auto">
-      {/* Header */}
-      <div className="p-4 flex items-center gap-4 border-b border-gray-100">
-        <Link href="/">
+      <div className="flex items-center justify-between px-4 py-2">
+        <Link
+          href="/"
+          className="p-2 hover:bg-lightGray rounded-full transition-colors"
+        >
           <Image
             src="/arrow-back.jpg"
-            alt="Back"
             width={50}
             height={50}
+            alt="home"
             className="size-5"
             quality={100}
           />
         </Link>
-        <div className="flex-1">
-          <div className="flex flex-col items-center">
+
+        <div className="bg-red-500 flex-1">
+          <span>{crypto.name}</span>
+          <div className="text-blueSteel text-sm">
+            <span>COIN</span>
             <span>{crypto.name}</span>
-            <div className="flex items-center justify-center text-sm text-blueSteel divide-x divide-blueSteel/30">
-              <span className="px-4">COIN</span>
-              <span className="px-4">{crypto.name}</span>
-            </div>
           </div>
         </div>
-        <div className="flex items-center gap-8">
-          <button title="notification">
+
+        <div className="space-x-8">
+          <button
+            title="nofitifcation"
+            className="p-2 hover:bg-lightGray rounded-full transition-colors"
+          >
             <Image
               src="/notif-off.jpg"
-              alt="Refresh"
               width={50}
               height={50}
-              className="size-4"
+              alt="notification"
+              className="size-5"
               quality={100}
             />
           </button>
-          <button title="Information">
+
+          <button
+            title="manage crypto"
+            className="p-2 hover:bg-lightGray rounded-full transition-colors"
+          >
             <Image
               src="/info-light.jpg"
-              alt="Info"
               width={50}
               height={50}
-              className="size-4"
+              alt="info"
+              className="size-5"
               quality={100}
             />
           </button>
-        </div>
-      </div>
-
-      {/* Warning Banner */}
-      <div className="bg-[#FFF9E6] mx-4 mt-4 p-3 rounded-lg">
-        <div className="flex gap-2">
-          <Image
-            src="/info-orange.jpg"
-            alt="Warning"
-            width={20}
-            height={20}
-            className="size-5 flex-shrink-0"
-          />
-          <div>
-            <p className="text-[#B78103] text-[13px]">
-              The {crypto.name} network requires a one-time fee of 1{" "}
-              {crypto.name} for account activation.
-            </p>
-            <button className="text-[#0052FF] text-[13px] mt-1">
-              Learn more ›
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Balance Display */}
-      <div className="mt-8 text-center">
-        <Image
-          src={crypto.icon}
-          alt={crypto.name}
-          width={48}
-          height={48}
-          className="mx-auto mb-4"
-        />
-        <h2 className="text-[32px] font-semibold">0 {crypto.name}</h2>
-        <p className="text-gray-500 text-[15px]">≈ $0.00</p>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex justify-around mt-8 px-6">
-        {[
-          { name: "Send", icon: "/send.jpg" },
-          { name: "Receive", icon: "/receive.jpg" },
-          { name: "Buy", icon: "/card.jpg" },
-          { name: "Sell", icon: "/bank.jpg" },
-        ].map((action) => (
-          <button key={action.name} className="flex flex-col items-center">
-            <div className="bg-[#F5F7F9] p-4 rounded-full mb-2">
-              <Image
-                src={action.icon}
-                alt={action.name}
-                width={20}
-                height={20}
-                className="w-5 h-5"
-              />
-            </div>
-            <span className="text-[13px]">{action.name}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Transactions Section */}
-      <div className="mt-12 text-center px-4">
-        <Image
-          src="/search-doc.jpg"
-          alt="No transactions"
-          width={48}
-          height={48}
-          className="mx-auto mb-2"
-        />
-        <p className="text-gray-500 text-[15px]">
-          Transactions will appear here.
-        </p>
-        <p className="text-[13px] mt-1">
-          Can&apos;t find your transaction?{" "}
-          <button className="text-[#0052FF]">Check explorer</button>
-        </p>
-      </div>
-
-      {/* Price Section */}
-      <div className="mt-8 p-4">
-        <div className="flex justify-between items-center">
-          <h3 className="text-[15px]">Current {crypto.name} price</h3>
-          <button title="close">
-            {/* <Image src="/close.jpg" alt="Close" width={20} height={20} /> */}
-          </button>
-        </div>
-        <div className="flex items-center gap-2 mt-1">
-          <span className="text-[24px] font-semibold">
-            ${numericPrice.toFixed(2)}
-          </span>
-          <span className="text-[#098551] text-[15px]">{crypto.change}</span>
         </div>
       </div>
     </div>
