@@ -1,6 +1,6 @@
+import { formatCurrency } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
-import { cryptoData } from "@/lib/data";
 
 export default async function CryptoDetail({
   params,
@@ -8,6 +8,72 @@ export default async function CryptoDetail({
   params: Promise<{ symbol: string }>;
 }) {
   const slug = (await params).symbol;
+
+  const formatWithCustomDollarSign = (amount: string) => {
+    return (
+      <span>
+        <span className="font-sans">$</span>
+        {amount.replace("$", "")}
+      </span>
+    );
+  };
+
+  const cryptoData = [
+    {
+      icon: "/btc.jpg",
+      name: "BTC",
+      fullName: "Bitcoin",
+      price: formatWithCustomDollarSign(formatCurrency(98994.1)),
+      change: "+1.34%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/ethereum.jpg",
+      name: "ETH",
+      fullName: "Ethereum",
+      price: formatWithCustomDollarSign(formatCurrency(3463.49)),
+      change: "+0.12%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/bnb.jpg",
+      name: "BNB",
+      fullName: "BNB Smart Chain",
+      price: formatWithCustomDollarSign(formatCurrency(700.73)),
+      change: "+1.17%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/xrp.jpg",
+      name: "XRP",
+      fullName: "XRP",
+      price: formatWithCustomDollarSign(formatCurrency(0.64)),
+      change: "+0.85%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/solana.jpg",
+      name: "SOL",
+      fullName: "Solana",
+      price: formatWithCustomDollarSign(formatCurrency(112.45)),
+      change: "+2.31%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/usdt.jpg",
+      name: "USDT",
+      fullName: "Tron",
+      price: formatWithCustomDollarSign(formatCurrency(1.0)),
+      change: "+0.01%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+  ];
 
   const getCryptoData = (symbol: string) => {
     return cryptoData.find((crypto) => crypto.name === symbol.toUpperCase());
@@ -104,6 +170,17 @@ export default async function CryptoDetail({
           <div className="text-[32px] font-semibold">
             <span>{crypto.amount}</span> <span>{crypto.name}</span>
           </div>
+          <div className="flex items-center space-x-1">
+            <Image
+              src="/approx.jpg"
+              width={50}
+              height={50}
+              alt="approx"
+              className="size-2"
+            />
+            <p className="text-sm text-blueSteel">{crypto.price}</p>{" "}
+            {/* This is supposed to be the approx value of the crypto coin in usdt, you get?  */}
+          </div>
         </div>
 
         {/* Action Buttons */}
@@ -191,17 +268,33 @@ export default async function CryptoDetail({
         </div>
 
         {/* Price Footer */}
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4">
-          <div className="max-w-[520px] mx-auto">
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-blueSteel/30 px-4 pt-4 pb-10 ">
+          <div className="max-w-[520px] mx-auto px-4">
+            <p className="text-blueSteel">Current {crypto.name} price</p>
+
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-500">
-                Current {crypto.name} price
+              <div className="flex items-center space-x-4">
+                <span className="">{crypto.price}</span>
+                <span className="text-positiveGreen">{crypto.change}</span>
+                <div>
+                  <Image
+                    src="/uptrend.jpg"
+                    width={60}
+                    height={30}
+                    alt="uptrend"
+                    className=""
+                  />
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <span className="font-medium">${crypto.price}</span>
-                <span className="text-green-500 text-sm">
-                  +{crypto.change}%
-                </span>
+
+              <div>
+                <Image
+                  src="/arrow-up.jpg"
+                  width={50}
+                  height={50}
+                  alt="arrow-up"
+                  className="w-2.5 h-1.5"
+                />
               </div>
             </div>
           </div>

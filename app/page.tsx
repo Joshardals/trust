@@ -5,11 +5,7 @@ import { Header } from "./_components/shared/Header";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Footer } from "./_components/shared/Footer";
-import {
-  cryptoData,
-  formatCurrency,
-  formatWithCustomDollarSign,
-} from "@/lib/data";
+import { formatCurrency } from "@/lib/data";
 import Link from "next/link";
 
 export default function Home() {
@@ -18,10 +14,76 @@ export default function Home() {
   const [hideBalance, setHideBalance] = useState(false);
   const [showHomeTabs, setShowHomeTabs] = useState(true);
 
+  const formatWithCustomDollarSign = (amount: string) => {
+    return (
+      <span>
+        <span className="font-sans">$</span>
+        {amount.replace("$", "")}
+      </span>
+    );
+  };
+
   const amount = formatCurrency(0);
   const displayAmount = hideBalance
     ? "*****"
     : formatWithCustomDollarSign(amount);
+
+  const cryptoData = [
+    {
+      icon: "/btc.jpg",
+      name: "BTC",
+      fullName: "Bitcoin",
+      price: formatWithCustomDollarSign(formatCurrency(98994.1)),
+      change: "+1.34%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/ethereum.jpg",
+      name: "ETH",
+      fullName: "Ethereum",
+      price: formatWithCustomDollarSign(formatCurrency(3463.49)),
+      change: "+0.12%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/bnb.jpg",
+      name: "BNB",
+      fullName: "BNB Smart Chain",
+      price: formatWithCustomDollarSign(formatCurrency(700.73)),
+      change: "+1.17%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/xrp.jpg",
+      name: "XRP",
+      fullName: "XRP",
+      price: formatWithCustomDollarSign(formatCurrency(0.64)),
+      change: "+0.85%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/solana.jpg",
+      name: "SOL",
+      fullName: "Solana",
+      price: formatWithCustomDollarSign(formatCurrency(112.45)),
+      change: "+2.31%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+    {
+      icon: "/usdt.jpg",
+      name: "USDT",
+      fullName: "Tron",
+      price: formatWithCustomDollarSign(formatCurrency(1.0)),
+      change: "+0.01%",
+      amount: "0",
+      value: formatWithCustomDollarSign(formatCurrency(0)),
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,7 +159,7 @@ export default function Home() {
                     src="/arrow-down.jpg"
                     width={50}
                     height={50}
-                    alt="copy"
+                    alt="arrow-down"
                     className="w-2.5 h-1.5"
                     quality={100}
                   />
