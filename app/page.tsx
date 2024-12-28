@@ -50,8 +50,7 @@ export default function Home() {
     const fetchCryptoData = async () => {
       try {
         const response = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,ripple,solana,tether&vs_currencies=usd&include_24hr_change=true",
-          { next: { revalidate: 60 } }
+          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,ripple,solana,tether&vs_currencies=usd&include_24hr_change=true"
         );
         const data = await response.json();
 
