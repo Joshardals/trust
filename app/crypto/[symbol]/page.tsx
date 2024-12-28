@@ -19,9 +19,9 @@ export default async function CryptoDetail({
     return <div>Cryptocurrency not found</div>;
   }
 
-  const numericPrice = parseFloat(
-    crypto.price.props.children[1].replace(/,/g, "")
-  );
+//   const numericPrice = parseFloat(
+//     crypto.price.props.children[1].replace(/,/g, "")
+//   );
 
   return (
     <div className="min-h-screen max-w-[520px] mx-auto">
