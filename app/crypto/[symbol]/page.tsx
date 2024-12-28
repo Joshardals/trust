@@ -24,10 +24,10 @@ export default async function CryptoDetail({
   );
 
   return (
-    <div className="min-h-screen bg-white max-w-[520px] mx-auto">
+    <div className="min-h-screen max-w-[520px] mx-auto">
       {/* Header */}
       <div className="p-4 flex items-center gap-4 border-b border-gray-100">
-        <Link href="/" className="text-gray-600">
+        <Link href="/">
           <Image
             src="/arrow-back.jpg"
             alt="Back"
@@ -38,12 +38,15 @@ export default async function CryptoDetail({
           />
         </Link>
         <div className="flex-1">
-          <div className="flex items-center justify-center gap-2">
-            <span className="text-[15px] text-gray-500">COIN</span>
-            <span className="text-[15px] text-gray-500">{crypto.name}</span>
+          <div className="flex flex-col items-center">
+            <span>{crypto.name}</span>
+            <div className="flex items-center justify-center text-sm text-blueSteel divide-x divide-blueSteel/30">
+              <span className="px-4">COIN</span>
+              <span className="px-4">{crypto.name}</span>
+            </div>
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
           <button title="notification">
             <Image
               src="/notif-off.jpg"
@@ -71,7 +74,7 @@ export default async function CryptoDetail({
       <div className="bg-[#FFF9E6] mx-4 mt-4 p-3 rounded-lg">
         <div className="flex gap-2">
           <Image
-            src="/warning.jpg"
+            src="/info-orange.jpg"
             alt="Warning"
             width={20}
             height={20}
@@ -148,7 +151,7 @@ export default async function CryptoDetail({
         <div className="flex justify-between items-center">
           <h3 className="text-[15px]">Current {crypto.name} price</h3>
           <button title="close">
-            <Image src="/close.jpg" alt="Close" width={20} height={20} />
+            {/* <Image src="/close.jpg" alt="Close" width={20} height={20} /> */}
           </button>
         </div>
         <div className="flex items-center gap-2 mt-1">

@@ -157,7 +157,7 @@ export default function Home() {
                   quality={100}
                 />
               </div>
-              <span className="text-sm ">Send</span>
+              <span className="text-sm">Send</span>
             </button>
             <button className="flex flex-col items-center gap-2">
               <div className="p-4 bg-softWhite rounded-full">
