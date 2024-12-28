@@ -115,6 +115,7 @@ export default function Home() {
               height={50}
               alt="Search Icon"
               quality={100}
+              priority={true}
             />
 
             <input
@@ -162,6 +163,7 @@ export default function Home() {
                     alt="arrow-down"
                     className="w-2.5 h-1.5"
                     quality={100}
+                    priority={true}
                   />
                 </div>
                 <div>
@@ -180,6 +182,7 @@ export default function Home() {
                     alt="copy"
                     className="size-4"
                     quality={100}
+                    priority={true}
                   />
                 </button>
                 <button title="scan" className="icons-container">
@@ -190,6 +193,7 @@ export default function Home() {
                     alt="qr"
                     className="size-4"
                     quality={100}
+                    priority={true}
                   />
                 </button>
                 <button title="notification" className="icons-container">
@@ -200,6 +204,7 @@ export default function Home() {
                     alt="notification"
                     className="size-4"
                     quality={100}
+                    priority={true}
                   />
                 </button>
               </div>
@@ -217,6 +222,7 @@ export default function Home() {
                   alt="send"
                   className="size-5"
                   quality={100}
+                  priority={true}
                 />
               </div>
               <span className="text-sm">Send</span>
@@ -230,6 +236,7 @@ export default function Home() {
                   alt="receive"
                   className="size-5"
                   quality={100}
+                  priority={true}
                 />
               </div>
               <span className="text-sm">Receive</span>
@@ -243,6 +250,7 @@ export default function Home() {
                   alt="buy"
                   className="size-5"
                   quality={100}
+                  priority={true}
                 />
               </div>
               <span className="text-sm">Buy</span>
@@ -256,6 +264,7 @@ export default function Home() {
                   alt="sell"
                   className="size-5"
                   quality={100}
+                  priority={true}
                 />
               </div>
               <span className="text-sm ">Sell</span>
@@ -269,6 +278,7 @@ export default function Home() {
                   alt="history"
                   className="size-5"
                   quality={100}
+                  priority={true}
                 />
               </div>
               <span className="text-sm ">History</span>
@@ -313,6 +323,7 @@ export default function Home() {
                         alt={crypto.name}
                         className="size-10"
                         quality={100}
+                        priority={true}
                       />
                     </div>
                     <div>
