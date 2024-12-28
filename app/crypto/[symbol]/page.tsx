@@ -1,23 +1,19 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { cryptoData } from "@/lib/data";
 
-interface CryptoDetailProps {
-  params: {
-    symbol: string;
-  };
-}
-
-export default function CryptoDetail({ params }: CryptoDetailProps) {
-//   const [timeFrame, setTimeFrame] = useState("1D");
+export default async function CryptoDetail({
+  params,
+}: {
+  params: Promise<{ symbol: string }>;
+}) {
+  const slug = (await params).symbol;
 
   const getCryptoData = (symbol: string) => {
     return cryptoData.find((crypto) => crypto.name === symbol.toUpperCase());
   };
 
-  const crypto = getCryptoData(params.symbol.toUpperCase());
+  const crypto = getCryptoData(slug.toUpperCase());
 
   if (!crypto) {
     return <div>Cryptocurrency not found</div>;
